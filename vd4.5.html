@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+ <div>
+   <h3>nester controler with model variables defined inside objects</h3>
+     ( typing on an input fiedl, with a data biding to the model acrs on a )
+     <div ng-controller="firstcontrollerobj">
+         <h3>first controler</h3>
+         <strong>first name:</strong> {{firsModelobj.firstname}} <br>
+         <label> set the first name: <input type="text" ng-model="firsModelobj.firstname"></label> <br>
+
+         <div ng-controller="secondcontrollerobj">
+             <h3>second controller (inside first)</h3>
+             <strong>first name (from first):</strong> {{firsModelobj.firstname}} <br>
+             <strong>last name (from last):</strong> {{secondmodelobj.lastname}}<br>
+             <strong>full name:</strong> {{getfullname()}}<br>
+             <label>set the first name:<input type="text" ng-model="firsModelobj.firstname"></label><br>
+             <label>set the last name: <input type="text" ng-model="secondmodelobj.lastname"></label><br>
+             <div ng-controller="thirdcontrollerobj">
+                 <h3>third controller(inside second and first)</h3>
+                 <strong>first name:(from fist):</strong>{{firsModelobj.firstname}}<br>
+                 <strong>middle name:(from thirs)</strong>{{thirdcontrollerobj.middlename}}<br>
+                 <strong>last name:(from secon)</strong>{{secondmodelobj.lastname}}<br>
+                 <strong>lastname:(from third)</strong>{{thirdcontrollerobj.lastname}}<br>
+                 <strong>full name:(redefinde in third)</strong>{{getfullname()}}<br>
+                 <label>set the first name: <input type="text" ng-model="firsModelobj.firstname"></label><br>
+                 <label>set the middle name: <input type="text"ng-model="thirdcontrollerobj.middlename"></label><br>
+                 <label>set the last name: <input type="text" ng-model="thirdcontrollerobj.lastname"></label>
+
+             </div>
+
+
+         </div>
+
+
+     </div>
+ </div>
+
+
+ <script>
+     var app=angular.module('myApp',[]);
+     app.controller('firstcontrollerobj', function ($scope) {
+         $scope.firsModelobj={
+             firstname:'hoang'
+         };
+     }),
+     app.controller('secondcontrollerobj', function ($scope) {
+         $scope.secondmodelobj={
+             lastname:'minh'
+         };
+     })
+     app.controller('thirdcontrollerobj', function ($scope) {
+         $scope.thirdcontrollerobj={
+             firstname:'hoang',
+             lastname:'minh',
+             middlename:'cong',
+         }
+     })
+ </script>
+
+</body>
+</html>

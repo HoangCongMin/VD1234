@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js">
+      var myApp = angular.module("myApp", []);
+      myApp.controller("myController", function($scope){
+          var counter = 0;
+          var fruits= ['apple', 'lemon', 'meloon', 'pineapple', 'longan'];
+          $scope.click = function(){
+              $scope.fruit = fruits[counter % fruits.length];
+              counter++;
+          }
+      });
+  </script>
+</head>
+<body>
+  <button ng-click="click()">Click</button>
+  <p>One-time binding: {{ ::fruit }}</p>
+  <p>Normal binding: {{ fruit }}</p>
+  {{result}}
+
+</body>
+</html>

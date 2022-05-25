@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+<h1>custom filter</h1>
+  <ul ng-app="myApp" ng-controller="myController">
+      <li ng-repeat="x in names">
+          {{x | myFilter }}
+      </li>
+
+  </ul>
+
+<script>
+    var app=angular.module('myApp',[]);
+    app.filter('myFilter', function () {
+        return function (x) {
+            var i,c,txt="";
+            for(i=0;i<x.length;i++){
+                c=x[i];
+                if(i % 2 == 0){
+                    c=c.toUpperCase();
+                }
+                txt += c;
+            }
+            return txt;
+
+        }
+    });
+    app.controller('myController', function ($scope) {
+        $scope.names=['minh', 'tuan', 'hoang', 'quan', 'quang', 'tu'];
+    })
+</script>
+<p> this filter ,called 'myFilter', will capitalize every other charecter</p>
+
+
+
+</body>
+</html>

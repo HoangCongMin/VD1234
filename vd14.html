@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body>
+ <h1>angurlar date filter</h1>
+ <div ng-app="myApp" ng-controller="myController">
+     defaul date:{{today|date}}<br>
+     short:{{today| date:'short'}}<br>
+     medium:{{today | date:'medium'}}<br>
+     short date:{{today| date:'shortDate'}}<br>
+     long date :{{today| date:'longDate'}}<br>
+     medium date:{{today| date:'mediumDate'}}<br>
+     full date: {{today| date:'fullDate'}}<br>
+     year: {{today| date:'yyyy'}}<br>
+     short time:{{today| date:'shortTime'}}<br>
+     mediumtime:{{today| date:'mediumTime'}}<br>
+
+ </div>
+
+ <script>
+     var app=angular.module('myApp',[]);
+     app.controller('myController',function ($scope) {
+         $scope.today= new Date();
+     })
+ </script>
+
+</body>
+</html>

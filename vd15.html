@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body ng-app>
+ <h1> angularjs uppercase and lowcase</h1>
+   <div ng-init="person.firstname='jame';person.lastname='bond'">
+       lower case:{{person.firstname+''+person.lastname | lowercase}}<br>
+       uppercase:{{person.firstname+''+person.lastname | uppercase}}
+
+   </div>
+
+
+</body>
+</html>

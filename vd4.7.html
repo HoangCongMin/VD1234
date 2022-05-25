@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body>
+ <div ng-app="myApp" ng-controller="myController">
+     <p>today wellcome message</p>
+     <h1>{{dorset}}</h1>
+
+ </div>
+ <script>
+     var app=angular.module('myApp',[])
+     app.controller('myController', function ($scope,$http) {
+         $http.get('dorset.html')
+         .then(function (mm) {
+             $scope.dorset=mm.data;
+         });
+
+     })
+ </script>
+
+</body>
+</html>

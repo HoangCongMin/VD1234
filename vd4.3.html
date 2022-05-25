@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div>
+    <h3> nested controler with model variables defined directly on ther scope</h3>
+
+
+</div>
+
+ <div ng-controller="firstcontrollerscope">
+     <h3>first controler</h3>
+     <strong>first name:</strong> {{firstname}}<br/>
+     <br/>
+     <label>set the first name: <input type="text" ng-model="firstname"></label><br/>
+
+
+     <div ng-controller="secondcontrollerscope">
+         <h3>second controller(inside first)</h3>
+         <strong>first name(from first):</strong> {{firstname}} <br/>
+         <strong>last name (new variable):</strong> {{lastname}} <br/>
+         <strong>full name</strong> {{getfullname()}} <br/>
+         <label> set the first name <input type="text" ng-model="firstname"/></label><br/>
+         <label> set the last name: <input type="text" ng-model="lastname"></label><br/>
+         <div ng-controller="thircontrollerscope">
+             <h3> third controller(inside second and first)</h3>
+             <strong> first name (from first):</strong> {{firstname}}<br/>
+             <strong> middle name(new variable)</strong> {{middlename}}<br/>
+             <strong>last name (from second)</strong> {{$parentlastname}}<br/>
+             <strong>last name (redefined in third)</strong> {{lastname}}<br/>
+             <strong> full name (redefined in third)</strong>{{getfullname()}}<br/>
+             <br>
+             <label> set the first name: <input type="text" ng-model="firstname"></label> <br>
+             <label> set the middle name: <input type="text" ng-model="middlename"> </label> <br>
+             <label> set the last name: <input type="text" ng-model="lastname"></label>
+
+
+
+
+         </div>
+     </div>
+ </div>
+
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('firstcontrollerscope',function ($scope) {
+        $scope.firstname='hoang';
+
+    });
+    app.controller('secondcontrollerscope', function ($scope) {
+        $scope.lastname='minh'
+        $scope.getfullname= function () {
+            return $scope.firstname+' '+$scope.lastname
+
+        };
+
+    });
+    app.controller('thircontrollerscope', function ($scope) {
+        $scope.middlename='cong';
+        $scope.lastname='minh';
+        $scope.getfullname= function () {
+            return $scope.firstname+' '+$scope.middlename+' '+$scope.lastname
+        }
+
+    })
+</script>
+
+</body>
+</html>
